@@ -2,12 +2,13 @@ package org.local.diceroll.manager;
 
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import org.local.diceroll.dice.DicePool;
 
 import java.util.HashMap;
 
 public class DicePoolManager {
     private VBox container;
-    private HashMap<Node, String> pools;
+    private HashMap<Node, DicePool> pools;
 
     public DicePoolManager(VBox container) {
         this.container = container;
@@ -15,16 +16,16 @@ public class DicePoolManager {
     }
 
     public void setPool(Node node, String pool) {
-        this.pools.put(node, pool);
+        this.pools.put(node, new DicePool(pool));
     }
 
-    public String getPool(Node node) {
+    public DicePool getPool(Node node) {
         return this.pools.get(node);
     }
 
     public void initPool(Node node, String pool) {
         this.container.getChildren().add(node);
-        this.pools.put(node, pool);
+        this.pools.put(node, new DicePool(pool));
     }
 
     public void initPool(Node node) {
@@ -38,5 +39,16 @@ public class DicePoolManager {
 
     public int getDicePoolCounter() {
         return this.container.getChildren().size();
+    }
+
+    public void updateDicePool(Node node, String text) {
+        DicePool pool = getPool(node);
+        if (!pool.equalsPool(text)) {
+            setPool(node, text);
+        }
+    }
+
+    public String throwDicePool(Node node) {
+        return getPool(node).roll().toString();
     }
 }

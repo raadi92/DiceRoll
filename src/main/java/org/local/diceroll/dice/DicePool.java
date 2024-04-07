@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class DicePool {
+
+    private String poolString;
     private List<Die> dice;
     private int modifier;
     private int result;
@@ -16,6 +18,7 @@ public class DicePool {
 
     public DicePool(String pool) {
         this.dice = new ArrayList<>();
+        this.poolString = pool;
         this.modifier = 0;
 
         List<DieDefinition> diceDef = DieDefinition.parseDicePool(pool);
@@ -30,7 +33,7 @@ public class DicePool {
     }
 
     private void addDiceDef(DieDefinition definition) {
-        for (int i=0; i < definition.numberOfDice; i++){
+        for (int i = 0; i < definition.numberOfDice; i++) {
             this.dice.add(Die.newDie(definition.numberOfFaces, definition.sign));
         }
     }
@@ -48,6 +51,10 @@ public class DicePool {
         return this.result;
     }
 
+    public String getPoolString() {
+        return poolString;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -56,6 +63,18 @@ public class DicePool {
         sb.append("}");
         return sb.toString();
     }
+
+    public boolean equalsPool(Object otherPool) {
+        if (otherPool == null || this.poolString == null) return false;
+        if (otherPool instanceof DicePool) {
+            return this.poolString.equalsIgnoreCase(((DicePool)otherPool).poolString);
+        } else if (otherPool instanceof String) {
+            return this.poolString.equalsIgnoreCase((String)otherPool);
+        }
+        return false;
+    }
+
+
 }
 
 

@@ -35,4 +35,18 @@ class DiceTest {
         assertTrue(value > 1 && value < 54);
     }
 
+    @Test
+    void testEmptyPool() {
+        DicePool pool = new DicePool("");
+        int value = pool.roll().value();
+        assertEquals(0, value);
+    }
+
+    @Test
+    void testNullPool() {
+        DicePool pool = new DicePool(null);
+        int value = pool.roll().value();
+        assertEquals(0, value);
+    }
+
 }

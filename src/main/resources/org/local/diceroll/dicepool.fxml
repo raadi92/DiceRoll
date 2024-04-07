@@ -12,14 +12,14 @@
       spacing="10.0"
       xmlns="http://javafx.com/javafx/17.0.2-ea"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.local.diceroll.controller.DicepoolController">
+      fx:controller="org.local.diceroll.controller.DicePoolController">
     <children>
         <TextField fx:id="txtDicePool" prefHeight="40.0" prefWidth="250.0">
             <HBox.margin>
                 <Insets/>
             </HBox.margin>
         </TextField>
-        <Button fx:id="btnThrow" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Throw">
+        <Button onAction="#onThrowButtonClick" mnemonicParsing="false" prefHeight="40.0" prefWidth="80.0" text="Throw">
             <HBox.margin>
                 <Insets/>
             </HBox.margin>
@@ -32,7 +32,7 @@
                 <Insets left="10.0" right="10.0"/>
             </padding>
         </Label>
-        <Button fx:id="btnClose" onAction="#onCloseButtonClick" mnemonicParsing="false" prefHeight="40.0" prefWidth="30.0" text="-">
+        <Button onAction="#onCloseButtonClick" mnemonicParsing="false" prefHeight="40.0" prefWidth="30.0" text="-">
             <HBox.margin>
                 <Insets/>
             </HBox.margin>

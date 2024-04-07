@@ -28,8 +28,8 @@ public class HomeController {
     private void addNewDicePool() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Home.class.getResource("/org/local/diceroll/dicepool.fxml"));
         Node dicePoolNode = fxmlLoader.load();
-        DicepoolController controller = fxmlLoader.getController();
-        controller.initDicepoolController(dicePoolNode, poolManager);
+        DicePoolController controller = fxmlLoader.getController();
+        controller.initDicePoolController(dicePoolNode, poolManager);
         poolManager.initPool(dicePoolNode);
     }
 

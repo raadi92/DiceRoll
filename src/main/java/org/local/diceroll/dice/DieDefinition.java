@@ -30,20 +30,22 @@ public class DieDefinition {
 
         List<DieDefinition> diceDef = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile(DICE_POOL_REGEX);
-        Matcher matcher = pattern.matcher(pool.replaceAll("\\s+", ""));
+        if (pool != null) {
+            Pattern pattern = Pattern.compile(DICE_POOL_REGEX);
+            Matcher matcher = pattern.matcher(pool.replaceAll("\\s+", ""));
 
-        while (matcher.find()) {
-            DieDefinition die = new DieDefinition();
-            die.sign = getSign(matcher);
-            die.numberOfDice = Integer.parseInt(matcher.group(2));
-            String d = matcher.group(3);
-            die.isDice = (d != null && d.equalsIgnoreCase(DICE_ID));
-            if (die.isDice) {
-                die.numberOfFaces = Integer.parseInt(matcher.group(4));
+            while (matcher.find()) {
+                DieDefinition die = new DieDefinition();
+                die.sign = getSign(matcher);
+                die.numberOfDice = Integer.parseInt(matcher.group(2));
+                String d = matcher.group(3);
+                die.isDice = (d != null && d.equalsIgnoreCase(DICE_ID));
+                if (die.isDice) {
+                    die.numberOfFaces = Integer.parseInt(matcher.group(4));
+                }
+
+                diceDef.add(die);
             }
-
-            diceDef.add(die);
         }
 
         return diceDef;
