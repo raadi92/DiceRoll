@@ -16,7 +16,7 @@ public class DicePoolController {
     @FXML
     private Label lblResult;
 
-    protected void initDicePoolController(Node node, DicePoolManager poolManager){
+    public void initDicePoolController(Node node, DicePoolManager poolManager){
         this.node = node;
         this.poolManager = poolManager;
     }
@@ -28,6 +28,10 @@ public class DicePoolController {
     public void onThrowButtonClick() {
         this.poolManager.updateDicePool(node, txtDicePool.getText());
         lblResult.setText(this.poolManager.throwDicePool(node));
+    }
+
+    public void populateDicePool(String text) {
+        txtDicePool.setText(text);
     }
 
 }
