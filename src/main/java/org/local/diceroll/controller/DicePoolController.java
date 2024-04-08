@@ -10,19 +10,22 @@ public class DicePoolController {
 
     private Node node;
     private DicePoolManager poolManager;
+    private HomeController homeController;
 
     @FXML
     private TextField txtDicePool;
     @FXML
     private Label lblResult;
 
-    public void initDicePoolController(Node node, DicePoolManager poolManager){
+    public void initDicePoolController(Node node, DicePoolManager poolManager, HomeController homeController){
         this.node = node;
         this.poolManager = poolManager;
+        this.homeController = homeController;
     }
 
     public void onCloseButtonClick() {
         this.poolManager.clearPool(node);
+        this.homeController.removeChildFromPool(node);
     }
 
     public void onThrowButtonClick() {
