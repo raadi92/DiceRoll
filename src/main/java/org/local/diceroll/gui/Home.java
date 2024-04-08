@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.local.diceroll.controller.HomeController;
 
 /**
  *
@@ -17,5 +18,9 @@ public class Home extends Application {
         stage.setTitle("DiceRoll");
         stage.setScene(scene);
         stage.show();
+        HomeController controller = fxmlLoader.getController();
+        controller.initializeController(stage);
     }
+
+
 }
